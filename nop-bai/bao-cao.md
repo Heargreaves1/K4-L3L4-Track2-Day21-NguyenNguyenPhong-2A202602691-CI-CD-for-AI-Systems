@@ -37,7 +37,7 @@ Chỉ số F1-score của lớp dương (target = 1) là trung bình điều hò
 | Khó khăn | Nguyên nhân | Cách giải quyết |
 |---|---|---|
 | Lỗi import `FallbackAsyncAdaptedQueuePool` khi MLflow kết nối SQLite | MLflow 2.13.0 không tương thích với SQLAlchemy 2.1.x mới nhất | Cố định ràng buộc `sqlalchemy<2.0.35` trong `requirements.txt` và hạ về SQLAlchemy 2.0.34. |
-| Pipeline CI/CD có thể thất bại khi tải dữ liệu từ DVC remote | CI runner bắt đầu chạy ngay khi push git trong khi file dữ liệu chưa đẩy lên storage | Luôn thực hiện `dvc push` dữ liệu lên cloud storage hoàn tất trước khi tiến hành `git push`. |
+| Không thể kích hoạt tài nguyên trên AWS (S3 và EC2) | Tài khoản AWS gặp lỗi xác minh thanh toán / hạn ngạch tài nguyên (Account verification & vCPU limit) | Hoàn thiện mã nguồn CI/CD, kịch bản serving FastAPI và kiểm thử toàn diện 100% cục bộ bằng pytest. |
 | Nguy cơ so sánh sai ngưỡng chất lượng tại Quality Gate | GitHub Actions outputs luôn trả về giá trị ở dạng chuỗi ký tự (string) | Ép kiểu dữ liệu `float()` tường minh trong script kiểm tra của job Quality Gate trước khi so sánh. |
 
 ---
